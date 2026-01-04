@@ -29,7 +29,7 @@ public class LiquidGlassEffectView: UIView, AnyVisualEffectView {
         let liquidGlassView = LiquidGlassView(effect.style.liquidGlass)
         addSubview(liquidGlassView)
         self.liquidGlassView = liquidGlassView
-        
+
         setupContentView()
     }
 
@@ -71,6 +71,7 @@ public class LiquidGlassEffect: UIVisualEffect {
     public enum Style {
         case regular, clear
 
+#if compiler(>=6.2)
         @available(iOS 26.0, *)
         var nativeStyle: UIGlassEffect.Style {
             switch self {
@@ -78,6 +79,7 @@ public class LiquidGlassEffect: UIVisualEffect {
             case .clear: .clear
             }
         }
+#endif
 
         var liquidGlass: LiquidGlass {
             switch self {
@@ -131,7 +133,7 @@ public class LiquidGlassContainerEffect: UIVisualEffect {
         self.isNative = isNative
         super.init()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -146,6 +148,7 @@ extension UIVisualEffectView: AnyVisualEffectView { }
 
 public func VisualEffectView(effect: UIVisualEffect?) -> AnyVisualEffectView {
     if let effect = effect as? LiquidGlassEffect {
+#if compiler(>=6.2)
         if #available(iOS 26.0, *), effect.isNative {
             let nativeEffect = UIGlassEffect(style: effect.style.nativeStyle)
             nativeEffect.isInteractive = effect.isInteractive
@@ -156,7 +159,12 @@ public func VisualEffectView(effect: UIVisualEffect?) -> AnyVisualEffectView {
             // Returns custom iOS 18 implementation
             return LiquidGlassEffectView(effect: effect)
         }
+#else
+        // Returns custom iOS 18 implementation
+        return LiquidGlassEffectView(effect: effect)
+#endif
     } else if let effect = effect as? LiquidGlassContainerEffect {
+#if compiler(>=6.2)
         if #available(iOS 26.0, *), effect.isNative {
             let nativeEffect = UIGlassContainerEffect()
             nativeEffect.spacing = effect.spacing
@@ -166,6 +174,10 @@ public func VisualEffectView(effect: UIVisualEffect?) -> AnyVisualEffectView {
             // Returns custom iOS 18 implementation
             return LiquidGlassEffectView(effect: effect)
         }
+#else
+        // Returns custom iOS 18 implementation
+        return LiquidGlassEffectView(effect: effect)
+#endif
     } else {
         return UIVisualEffectView(effect: effect)
     }
