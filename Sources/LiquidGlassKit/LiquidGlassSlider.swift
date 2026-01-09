@@ -66,13 +66,15 @@ open class LiquidGlassSlider: UIControl {
     /// A Boolean value indicating whether changes in the slider's value generate continuous update events.
     open var isContinuous: Bool = true
     
+#if compiler(>=6.2)
     /// The slider's visual style.
     @available(iOS 26.0, *)
     open var sliderStyle: UISlider.Style {
         get { isThumbless ? .thumbless : .default }
         set { isThumbless = (newValue == .thumbless) }
     }
-    
+#endif
+
     /// Internal storage for slider style (true = thumbless, false = continuous).
     private var isThumbless: Bool = false
     
@@ -850,8 +852,10 @@ public protocol AnySlider: UIControl {
     var minimumValueImage: UIImage? { get set }
     var maximumValueImage: UIImage? { get set }
     var isContinuous: Bool { get set }
+#if compiler(>=6.2)
     @available(iOS 26.0, *)
     var sliderStyle: UISlider.Style { get set }
+#endif
     var minimumTrackTintColor: UIColor? { get set }
     var maximumTrackTintColor: UIColor? { get set }
     var thumbTintColor: UIColor? { get set }

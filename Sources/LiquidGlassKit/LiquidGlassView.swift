@@ -68,12 +68,12 @@ struct LiquidGlass {
                 glareOppositeSideBias: 0,
                 glareIntensity: 0.01,
                 glareEdgeSharpness: -0.2,
-                glareDirectionOffset: .pi * 0.9,
+                glareDirectionOffset: .pi * 0.9
             ),
             backgroundTextureSizeCoefficient: 1 / magnification,
             backgroundTextureScaleCoefficient: magnification,
             backgroundTextureBlurRadius: 0,
-            shadowOverlay: true,
+            shadowOverlay: true
         )
     }
 
@@ -90,12 +90,12 @@ struct LiquidGlass {
             glareOppositeSideBias: 1,
             glareIntensity: 0.1,
             glareEdgeSharpness: -0.1,
-            glareDirectionOffset: -.pi / 4,
+            glareDirectionOffset: -.pi / 4
         ),
         backgroundTextureSizeCoefficient: 1.1,
         backgroundTextureScaleCoefficient: 0.8,
         backgroundTextureBlurRadius: 0,
-        shadowOverlay: true,
+        shadowOverlay: true
     )
 
     static let regular = Self.init(
@@ -111,7 +111,7 @@ struct LiquidGlass {
             glareOppositeSideBias: 1,
             glareIntensity: 0.1,
             glareEdgeSharpness: -0.15,
-            glareDirectionOffset: -.pi / 4,
+            glareDirectionOffset: -.pi / 4
         ),
         backgroundTextureSizeCoefficient: 1,
         backgroundTextureScaleCoefficient: 0.2,
