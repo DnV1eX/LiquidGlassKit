@@ -1,0 +1,24 @@
+{
+	"configurations": [
+		{
+			"type": "swift",
+			"request": "launch",
+			"args": [],
+			"cwd": "${workspaceFolder:LiquidGlassKit}",
+			"name": "Debug LiquidGlassDemoApp",
+			"target": "LiquidGlassDemoApp",
+			"configuration": "debug",
+			"preLaunchTask": "swift: Build Debug LiquidGlassDemoApp"
+		},
+		{
+			"type": "swift",
+			"request": "launch",
+			"args": [],
+			"cwd": "${workspaceFolder:LiquidGlassKit}",
+			"name": "Release LiquidGlassDemoApp",
+			"target": "LiquidGlassDemoApp",
+			"configuration": "release",
+			"preLaunchTask": "swift: Build Release LiquidGlassDemoApp"
+		}
+	]
+}
